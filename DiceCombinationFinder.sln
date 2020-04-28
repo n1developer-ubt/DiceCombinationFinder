@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiceCombinationFinder", "DiceCombinationFinder\DiceCombinationFinder.csproj", "{67FA9BF2-9A8B-4673-A120-11DB4CEC045B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67FA9BF2-9A8B-4673-A120-11DB4CEC045B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FA9BF2-9A8B-4673-A120-11DB4CEC045B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FA9BF2-9A8B-4673-A120-11DB4CEC045B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FA9BF2-9A8B-4673-A120-11DB4CEC045B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39A18A05-4664-43DD-B7A9-6CF09753041E}
+	EndGlobalSection
+EndGlobal
