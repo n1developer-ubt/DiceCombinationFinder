@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System; 
 using System.Windows.Forms;
 
 namespace DiceCombinationFinder
@@ -16,7 +13,7 @@ namespace DiceCombinationFinder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Splash());
+            Application.Run(new MainWindow());
         }
     }
 }

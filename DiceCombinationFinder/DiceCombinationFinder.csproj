@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.4">
-      <HintPath>..\..\n1developer-ubt\ubtlib\UBTStandardLibrary\bin\Debug\Bunifu_UI_v1.5.4.dll</HintPath>
+      <HintPath>..\..\ubtlib\UBTStandardLibrary\bin\Debug\Bunifu_UI_v1.5.4.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,10 +51,11 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UBTStandardLibrary">
-      <HintPath>..\..\n1developer-ubt\ubtlib\UBTStandardLibrary\bin\Debug\UBTStandardLibrary.dll</HintPath>
+      <HintPath>..\..\ubtlib\UBTStandardLibrary\bin\Debug\UBTStandardLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -17,12 +17,18 @@ namespace DiceCombinationFinder
             InitializeComponent();
             this.Closing+=delegate(object sender, CancelEventArgs args) { Environment.Exit(Environment.ExitCode); };
             List<string> s= new List<string>();
+            CheckForIllegalCrossThreadCalls = false;
+
             //GetCombinations(5, 8, 18, new List<int>(), ref s);
             //s = Set(s);
             //foreach (string s1 in s)
             //{
             //    MessageBox.Show(s1);
             //}
+
+            progress.MarqueeAnimationSpeed = 10;
+            progress.Visible = false;
+
         }
 
         private List<string> Set(List<string> s)
@@ -40,7 +46,7 @@ namespace DiceCombinationFinder
         }
 
         private bool Contains(ref List<string> sx, string toCheck)
-        {
+        { 
             var toCompare = toCheck.Split('+');
             toCompare = toCompare.Select(x => x.Trim()).OrderBy(x=>x).ToArray<string>();
 
@@ -76,7 +82,7 @@ namespace DiceCombinationFinder
             var faces = NumberFunctions.Parse(txtFaces.Text);
             var combinationsToRemove = txtRemoveCombination.Text.Trim().Split(',').Select(x => x.Trim()).ToList();
             int rolls = -1;
-            List<short> sums;
+            List<int> sums;
 
             //Convert rolls to int
             try
@@ -93,7 +99,7 @@ namespace DiceCombinationFinder
             //from txtSUms to sums
             try
             {
-                sums = txtOutputSum.Text.Split(',').Where(IsInt).Select(x => Convert.ToInt16(x.Trim())).ToList();
+                sums = txtOutputSum.Text.Split(',').Where(IsInt).Select(x => Convert.ToInt32(x.Trim())).ToList();
             }
             catch (Exception exception)
             {
@@ -122,21 +128,20 @@ namespace DiceCombinationFinder
 
             #endregion
 
-            txtOutput.ScrollToBottom();
+            progress.Visible = true;
+            Task.Run(() => {
+                btnSearch.Enabled = false; 
+                txtOutput.ScrollToBottom(); 
+                txtOutput.AppendText("Output\n\n", Color.Red);
 
-            txtOutput.AppendText("Output\n\n", Color.Red);
-
-            foreach (short sum in sums)
-            {
-                List<string> sumCombinationList = new List<string>();
-                NumberFunctions.GetCombinations(rolls, faces, sum, new List<int>(), ref sumCombinationList);
-
-                sumCombinationList = Set(sumCombinationList);
+                List<string> sumCombinationList = NumberFunctions.GetFastCombinations(rolls, faces, sums);
                 sumCombinationList = RemoveFromCombination(combinationsToRemove, sumCombinationList);
-                sumCombinationList.ForEach(x=>txtOutput.AppendText(x+" = " + sum+"\n", Color.ForestGreen));
-                txtOutput.AppendText("\n");
+                sumCombinationList.ForEach(x => txtOutput.AppendText(x + "\n", Color.ForestGreen)); 
                 txtOutput.ScrollToBottom();
-            }
+                btnSearch.Enabled = true; 
+                progress.Visible= false; 
+
+            });
         }
 
         private List<string> RemoveFromCombination(List<string> combsToRemove, List<string> combs)
@@ -155,7 +160,9 @@ namespace DiceCombinationFinder
                         continue;
                     }
 
-                    List<short> filteredCombination = comb.Split('+')
+                    var tc = comb.Split('=')[0].Trim();
+
+                    List<short> filteredCombination = tc.Split('+')
                         .Select(x => x.Replace("d", "").Replace("D", "").Trim()).Where(IsInt)
                         .Select(x => Convert.ToInt16(x)).ToList();
 

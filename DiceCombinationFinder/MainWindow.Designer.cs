@@ -30,21 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtFaces = new UBTStandardLibrary.UBTTextBox();
-            this.txtRemoveCombination = new UBTStandardLibrary.UBTTextBox();
-            this.txtRolls = new UBTStandardLibrary.UBTTextBox();
-            this.txtOutputSum = new UBTStandardLibrary.UBTTextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtOutput = new System.Windows.Forms.RichTextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnSearch = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtOutputSum = new UBTStandardLibrary.UBTTextBox();
+            this.txtRolls = new UBTStandardLibrary.UBTTextBox();
+            this.txtRemoveCombination = new UBTStandardLibrary.UBTTextBox();
+            this.txtFaces = new UBTStandardLibrary.UBTTextBox();
+            this.progress = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -59,140 +60,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 450);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.txtOutputSum);
-            this.panel2.Controls.Add(this.txtRolls);
-            this.panel2.Controls.Add(this.txtRemoveCombination);
-            this.panel2.Controls.Add(this.txtFaces);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 158);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.btnSearch);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 392);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(800, 58);
-            this.panel3.TabIndex = 2;
-            // 
-            // txtFaces
-            // 
-            this.txtFaces.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtFaces.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtFaces.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtFaces.BorderThickness = 2;
-            this.txtFaces.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtFaces.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFaces.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtFaces.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtFaces.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtFaces.Hint = "Faces 1-30, 34, 40, 44, #19, #20-24";
-            this.txtFaces.Index = -1;
-            this.txtFaces.isPassword = false;
-            this.txtFaces.Location = new System.Drawing.Point(0, 0);
-            this.txtFaces.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFaces.MaxLength = 32767;
-            this.txtFaces.Name = "txtFaces";
-            this.txtFaces.Size = new System.Drawing.Size(800, 38);
-            this.txtFaces.TabIndex = 0;
-            this.txtFaces.Text = "Faces 1-30, 34, 40, 44, #19, #20-24";
-            this.txtFaces.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // txtRemoveCombination
-            // 
-            this.txtRemoveCombination.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtRemoveCombination.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtRemoveCombination.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtRemoveCombination.BorderThickness = 2;
-            this.txtRemoveCombination.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtRemoveCombination.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRemoveCombination.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtRemoveCombination.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtRemoveCombination.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtRemoveCombination.Hint = "Remove Combination OOO, EEOOEE";
-            this.txtRemoveCombination.Index = -1;
-            this.txtRemoveCombination.isPassword = false;
-            this.txtRemoveCombination.Location = new System.Drawing.Point(0, 38);
-            this.txtRemoveCombination.Margin = new System.Windows.Forms.Padding(4);
-            this.txtRemoveCombination.MaxLength = 32767;
-            this.txtRemoveCombination.Name = "txtRemoveCombination";
-            this.txtRemoveCombination.Size = new System.Drawing.Size(800, 38);
-            this.txtRemoveCombination.TabIndex = 1;
-            this.txtRemoveCombination.Text = "Remove Combination OOO, EEOOEE";
-            this.txtRemoveCombination.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // txtRolls
-            // 
-            this.txtRolls.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtRolls.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtRolls.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtRolls.BorderThickness = 2;
-            this.txtRolls.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtRolls.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRolls.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtRolls.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtRolls.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtRolls.Hint = "No. Of Rolls E.g 5";
-            this.txtRolls.Index = -1;
-            this.txtRolls.isPassword = false;
-            this.txtRolls.Location = new System.Drawing.Point(0, 76);
-            this.txtRolls.Margin = new System.Windows.Forms.Padding(4);
-            this.txtRolls.MaxLength = 32767;
-            this.txtRolls.Name = "txtRolls";
-            this.txtRolls.Size = new System.Drawing.Size(800, 38);
-            this.txtRolls.TabIndex = 2;
-            this.txtRolls.Text = "No. Of Rolls E.g 5";
-            this.txtRolls.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // txtOutputSum
-            // 
-            this.txtOutputSum.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtOutputSum.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtOutputSum.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtOutputSum.BorderThickness = 2;
-            this.txtOutputSum.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtOutputSum.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtOutputSum.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtOutputSum.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtOutputSum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.txtOutputSum.Hint = "Sum 10, 20, 40";
-            this.txtOutputSum.Index = -1;
-            this.txtOutputSum.isPassword = false;
-            this.txtOutputSum.Location = new System.Drawing.Point(0, 114);
-            this.txtOutputSum.Margin = new System.Windows.Forms.Padding(4);
-            this.txtOutputSum.MaxLength = 32767;
-            this.txtOutputSum.Name = "txtOutputSum";
-            this.txtOutputSum.Size = new System.Drawing.Size(800, 38);
-            this.txtOutputSum.TabIndex = 3;
-            this.txtOutputSum.Text = "Sum 10, 20, 40";
-            this.txtOutputSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 158);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(800, 2);
-            this.panel5.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 390);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(800, 2);
-            this.panel4.TabIndex = 3;
             // 
             // panel6
             // 
@@ -214,6 +81,36 @@
             this.txtOutput.Size = new System.Drawing.Size(792, 222);
             this.txtOutput.TabIndex = 0;
             this.txtOutput.Text = "";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 390);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(800, 2);
+            this.panel4.TabIndex = 3;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 158);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(800, 2);
+            this.panel5.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.progress);
+            this.panel3.Controls.Add(this.btnSearch);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 392);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(5);
+            this.panel3.Size = new System.Drawing.Size(800, 58);
+            this.panel3.TabIndex = 2;
             // 
             // btnSearch
             // 
@@ -252,6 +149,121 @@
             this.btnSearch.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.txtOutputSum);
+            this.panel2.Controls.Add(this.txtRolls);
+            this.panel2.Controls.Add(this.txtRemoveCombination);
+            this.panel2.Controls.Add(this.txtFaces);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 158);
+            this.panel2.TabIndex = 1;
+            // 
+            // txtOutputSum
+            // 
+            this.txtOutputSum.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtOutputSum.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtOutputSum.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtOutputSum.BorderThickness = 2;
+            this.txtOutputSum.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtOutputSum.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtOutputSum.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtOutputSum.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtOutputSum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtOutputSum.Hint = "Sum 10, 20, 40";
+            this.txtOutputSum.Index = -1;
+            this.txtOutputSum.isPassword = false;
+            this.txtOutputSum.Location = new System.Drawing.Point(0, 114);
+            this.txtOutputSum.Margin = new System.Windows.Forms.Padding(4);
+            this.txtOutputSum.MaxLength = 32767;
+            this.txtOutputSum.Name = "txtOutputSum";
+            this.txtOutputSum.Size = new System.Drawing.Size(800, 38);
+            this.txtOutputSum.TabIndex = 3;
+            this.txtOutputSum.Text = "Sum 10, 20, 40";
+            this.txtOutputSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // txtRolls
+            // 
+            this.txtRolls.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtRolls.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtRolls.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtRolls.BorderThickness = 2;
+            this.txtRolls.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtRolls.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRolls.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtRolls.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtRolls.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtRolls.Hint = "No. Of Rolls E.g 5";
+            this.txtRolls.Index = -1;
+            this.txtRolls.isPassword = false;
+            this.txtRolls.Location = new System.Drawing.Point(0, 76);
+            this.txtRolls.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRolls.MaxLength = 32767;
+            this.txtRolls.Name = "txtRolls";
+            this.txtRolls.Size = new System.Drawing.Size(800, 38);
+            this.txtRolls.TabIndex = 2;
+            this.txtRolls.Text = "No. Of Rolls E.g 5";
+            this.txtRolls.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // txtRemoveCombination
+            // 
+            this.txtRemoveCombination.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtRemoveCombination.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtRemoveCombination.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtRemoveCombination.BorderThickness = 2;
+            this.txtRemoveCombination.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtRemoveCombination.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRemoveCombination.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtRemoveCombination.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtRemoveCombination.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtRemoveCombination.Hint = "Remove Combination OOO, EEOOEE";
+            this.txtRemoveCombination.Index = -1;
+            this.txtRemoveCombination.isPassword = false;
+            this.txtRemoveCombination.Location = new System.Drawing.Point(0, 38);
+            this.txtRemoveCombination.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRemoveCombination.MaxLength = 32767;
+            this.txtRemoveCombination.Name = "txtRemoveCombination";
+            this.txtRemoveCombination.Size = new System.Drawing.Size(800, 38);
+            this.txtRemoveCombination.TabIndex = 1;
+            this.txtRemoveCombination.Text = "Remove Combination OOO, EEOOEE";
+            this.txtRemoveCombination.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // txtFaces
+            // 
+            this.txtFaces.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtFaces.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtFaces.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtFaces.BorderThickness = 2;
+            this.txtFaces.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtFaces.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFaces.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtFaces.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtFaces.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtFaces.Hint = "Faces 1-30, 34, 40, 44, #19, #20-24";
+            this.txtFaces.Index = -1;
+            this.txtFaces.isPassword = false;
+            this.txtFaces.Location = new System.Drawing.Point(0, 0);
+            this.txtFaces.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFaces.MaxLength = 32767;
+            this.txtFaces.Name = "txtFaces";
+            this.txtFaces.Size = new System.Drawing.Size(800, 38);
+            this.txtFaces.TabIndex = 0;
+            this.txtFaces.Text = "Faces 1-30, 34, 40, 44, #19, #20-24";
+            this.txtFaces.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // progress
+            // 
+            this.progress.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progress.Location = new System.Drawing.Point(5, 5);
+            this.progress.Margin = new System.Windows.Forms.Padding(5);
+            this.progress.Name = "progress";
+            this.progress.Size = new System.Drawing.Size(657, 48);
+            this.progress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progress.TabIndex = 1;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,9 +275,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dice Combination Finder";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -284,6 +296,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.RichTextBox txtOutput;
         private Bunifu.Framework.UI.BunifuFlatButton btnSearch;
+        private System.Windows.Forms.ProgressBar progress;
     }
 }
 

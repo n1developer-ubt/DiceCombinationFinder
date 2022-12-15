@@ -9,6 +9,32 @@ namespace DiceCombinationFinder
 {
     class NumberFunctions
     {
+        public static List<string> GetFastCombinations(int roll, List<int> faces, List<int> sums)
+        {
+            if (sums.All(s=>s<0) || sums.All(s=> roll * faces.Max()< s) || sums.All(s=>roll> s))
+                return new List<string>();
+
+            return faces.DifferentCombinations(roll).Select(combs =>
+            {
+                var whichSum = sums.Where(s => combs.Sum() == s).ToList();
+
+                if (whichSum.Count == 0)
+                    return null;
+
+                string outcombs = "";  
+                foreach(var comb in combs)
+                {
+                    outcombs += outcombs == "" ? ("D" + comb) : (" + D" + comb);
+                }
+
+                return outcombs + " = "+ whichSum[0];
+
+            }).Where(s=>s!=null).ToList();
+        }
+
+        
+
+
         public static int GetCombinations(int roll, List<int> faces, int sum, List<int> done, ref List<string> output, string combs = "")
         {
             if (roll == 0)
