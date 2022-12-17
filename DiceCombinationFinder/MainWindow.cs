@@ -134,9 +134,10 @@ namespace DiceCombinationFinder
                 txtOutput.ScrollToBottom(); 
                 txtOutput.AppendText("Output\n\n", Color.Red);
 
-                List<string> sumCombinationList = NumberFunctions.GetFastCombinations(rolls, faces, sums);
+                List<Output> sumCombinationList = NumberFunctions.GetFastCombinations(rolls, faces, sums);
+
                 sumCombinationList = RemoveFromCombination(combinationsToRemove, sumCombinationList);
-                sumCombinationList.ForEach(x => txtOutput.AppendText(x + "\n", Color.ForestGreen)); 
+                sumCombinationList.ForEach(x => txtOutput.AppendText(x.Out + "\n", Color.ForestGreen)); 
                 txtOutput.ScrollToBottom();
                 btnSearch.Enabled = true; 
                 progress.Visible= false; 
@@ -144,11 +145,11 @@ namespace DiceCombinationFinder
             });
         }
 
-        private List<string> RemoveFromCombination(List<string> combsToRemove, List<string> combs)
+        private List<Output> RemoveFromCombination(List<string> combsToRemove, List<Output> combs)
         {
-            List<string> newFilteredCombinations = new List<string>();
+            List<Output> newFilteredCombinations = new List<Output>();
             newFilteredCombinations.AddRange(combs);
-            foreach (string comb in combs)
+            foreach (Output comb in combs)
             {
                 bool result = false;
                 foreach (string combToRemove in combsToRemove)
@@ -160,7 +161,7 @@ namespace DiceCombinationFinder
                         continue;
                     }
 
-                    var tc = comb.Split('=')[0].Trim();
+                    var tc = comb.Filter;
 
                     List<short> filteredCombination = tc.Split('+')
                         .Select(x => x.Replace("d", "").Replace("D", "").Trim()).Where(IsInt)

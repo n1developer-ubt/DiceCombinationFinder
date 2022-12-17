@@ -7,12 +7,18 @@ using System.Windows.Forms;
 
 namespace DiceCombinationFinder
 {
+    public class Output
+    {
+        public string Out { get; set; }
+        public string Filter { get; set; }
+    }
+
     class NumberFunctions
     {
-        public static List<string> GetFastCombinations(int roll, List<int> faces, List<int> sums)
+        public static List<Output> GetFastCombinations(int roll, List<int> faces, List<int> sums)
         {
             if (sums.All(s=>s<0) || sums.All(s=> roll * faces.Max()< s) || sums.All(s=>roll> s))
-                return new List<string>();
+                return new List<Output>();
 
             return faces.DifferentCombinations(roll).Select(combs =>
             {
@@ -22,12 +28,20 @@ namespace DiceCombinationFinder
                     return null;
 
                 string outcombs = "";  
+                string outputString = "";
+                int index = 1;
                 foreach(var comb in combs)
                 {
                     outcombs += outcombs == "" ? ("D" + comb) : (" + D" + comb);
+                    outputString += outputString == "" ? ($"D{index++}=" + comb) : ( $" + D{index++}=" + comb);
                 }
 
-                return outcombs + " = "+ whichSum[0];
+                return new Output { 
+                    Out  = outputString,
+                    Filter = outcombs,
+                };
+
+                //return outcombs + " = "+ whichSum[0];
 
             }).Where(s=>s!=null).ToList();
         }
