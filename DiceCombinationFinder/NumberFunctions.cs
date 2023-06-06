@@ -10,7 +10,7 @@ namespace DiceCombinationFinder
     public class Output
     {
         public string Out { get; set; }
-        public string Filter { get; set; }
+        public List<int> Filter { get; set; } = new List<int>();
     }
 
     class NumberFunctions
@@ -27,18 +27,19 @@ namespace DiceCombinationFinder
                 if (whichSum.Count == 0)
                     return null;
 
-                string outcombs = "";  
+                var outCombs = new List<int>();
+                string number = "";
                 string outputString = "";
                 int index = 1;
                 foreach(var comb in combs)
                 {
-                    outcombs += outcombs == "" ? ("D" + comb) : (" + D" + comb);
-                    outputString += outputString == "" ? ($"D{index++}=" + comb) : ( $" + D{index++}=" + comb);
+                    outCombs.Add(comb);
+                    outputString += outputString == "" ? ($"D{index++}=" + comb) : ( $" + D{index++}=" + comb); 
                 }
 
                 return new Output { 
                     Out  = outputString,
-                    Filter = outcombs,
+                    Filter = outCombs, 
                 };
 
                 //return outcombs + " = "+ whichSum[0];

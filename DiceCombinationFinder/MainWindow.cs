@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -109,6 +110,8 @@ namespace DiceCombinationFinder
 
             #region Printer
 
+            lblCopiedText.Text = "";
+
             txtOutput.AppendText("Faces: ", Color.Red);
             faces.ForEach(x=>txtOutput.AppendText(x+", ", Color.ForestGreen));
             txtOutput.AppendText("\n\n", Color.Red);
@@ -126,24 +129,34 @@ namespace DiceCombinationFinder
             sums.ForEach(x => txtOutput.AppendText(x + ", ", Color.ForestGreen));
             txtOutput.AppendText("\n\n", Color.Red);
 
+
+
             #endregion
 
             progress.Visible = true;
             Task.Run(() => {
                 btnSearch.Enabled = false; 
-                txtOutput.ScrollToBottom(); 
+                txtOutput.ScrollToBottom();
+
+                OutputSumCombinationList = NumberFunctions.GetFastCombinations(rolls, faces, sums);
+
+                OutputSumCombinationList = RemoveFromCombination(combinationsToRemove, OutputSumCombinationList);
+
+                txtOutput.AppendText("Total Combinations: ", Color.Red);
+                txtOutput.AppendText(OutputSumCombinationList.Count +"", Color.ForestGreen);
+                txtOutput.AppendText("\n\n", Color.Red);
+
                 txtOutput.AppendText("Output\n\n", Color.Red);
 
-                List<Output> sumCombinationList = NumberFunctions.GetFastCombinations(rolls, faces, sums);
-
-                sumCombinationList = RemoveFromCombination(combinationsToRemove, sumCombinationList);
-                sumCombinationList.ForEach(x => txtOutput.AppendText(x.Out + "\n", Color.ForestGreen)); 
+                OutputSumCombinationList.ForEach(x => txtOutput.AppendText(x.Out + "\n", Color.ForestGreen)); 
                 txtOutput.ScrollToBottom();
                 btnSearch.Enabled = true; 
                 progress.Visible= false; 
 
             });
         }
+
+        private List<Output> OutputSumCombinationList = new List<Output>();
 
         private List<Output> RemoveFromCombination(List<string> combsToRemove, List<Output> combs)
         {
@@ -154,24 +167,14 @@ namespace DiceCombinationFinder
                 bool result = false;
                 foreach (string combToRemove in combsToRemove)
                 {
-                    string distinctCharacter = new string(combToRemove.ToCharArray().Distinct().ToArray());
-
-                    if(!distinctCharacter.ToLower().Contains("e") || !distinctCharacter.ToLower().Contains("o"))
-                    {
-                        continue;
-                    }
-
                     var tc = comb.Filter;
+                    var filteredCombination = comb.Filter;
 
-                    List<short> filteredCombination = tc.Split('+')
-                        .Select(x => x.Replace("d", "").Replace("D", "").Trim()).Where(IsInt)
-                        .Select(x => Convert.ToInt16(x)).ToList();
-
-                    if(filteredCombination.Count != combToRemove.Length)
+                    if (filteredCombination.Count != combToRemove.Length)
                     {
                         continue;
                     }
-
+                    
                     result = true;
                     for (int x = 0; x < filteredCombination.Count; x++)
                     {
@@ -184,7 +187,13 @@ namespace DiceCombinationFinder
                         result = false;
                         break;
                     }
-                    if(result)
+
+                    if (string.Join(",", filteredCombination) == "2,4,6,8,10")
+                    {
+                        Debug.WriteLine("Here: " + result + ", Comb: "+combToRemove);
+
+                    }
+                    if (result)
                         break;
                 }
 
@@ -205,6 +214,21 @@ namespace DiceCombinationFinder
             catch (Exception e)
             {
                 return false;
+            }
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            var r = string.Join("\n", OutputSumCombinationList.Select(a => a.Out));
+
+            if (!string.IsNullOrEmpty(r))
+            { 
+                Clipboard.SetText(r);
+                lblCopiedText.Text = "Copied!";
+            }
+            else
+            {
+                lblCopiedText.Text = "Nothing to copy!";
             }
         }
     }
