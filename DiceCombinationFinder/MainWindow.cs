@@ -4,10 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace DiceCombinationFinder
 {
@@ -141,6 +144,17 @@ namespace DiceCombinationFinder
                 OutputSumCombinationList = NumberFunctions.GetFastCombinations(rolls, faces, sums);
 
                 OutputSumCombinationList = RemoveFromCombination(combinationsToRemove, OutputSumCombinationList);
+
+                var ed = OutputSumCombinationList.Export();
+
+                this.Invoke(new MethodInvoker(() =>
+                { 
+                    File.WriteAllText("E:\\Repos\\duckdiceviewver\\public\\data.json", JsonConvert.SerializeObject(ed, new JsonSerializerSettings
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    }));
+                    //Environment.Exit(0);
+                })); 
 
                 txtOutput.AppendText("Total Combinations: ", Color.Red);
                 txtOutput.AppendText(OutputSumCombinationList.Count +"", Color.ForestGreen);
