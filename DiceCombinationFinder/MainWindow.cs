@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +34,8 @@ namespace DiceCombinationFinder
 
             progress.MarqueeAnimationSpeed = 10;
             progress.Visible = false;
+            btnVisualize.Enabled = false;
+            
 
         }
 
@@ -78,8 +82,8 @@ namespace DiceCombinationFinder
 
             return false;
         }
-        
 
+        private ExportOutput exportOutput = null;
         private void btnSearch_Click(object sender, EventArgs e)
         {
             txtOutput.Text = "";
@@ -145,16 +149,11 @@ namespace DiceCombinationFinder
 
                 OutputSumCombinationList = RemoveFromCombination(combinationsToRemove, OutputSumCombinationList);
 
-                var ed = OutputSumCombinationList.Export();
+                exportOutput = OutputSumCombinationList.Export();
+                exportOutput.Rolls = rolls;
+                exportOutput.Faces = faces;
 
-                this.Invoke(new MethodInvoker(() =>
-                { 
-                    File.WriteAllText("E:\\Repos\\duckdiceviewver\\public\\data.json", JsonConvert.SerializeObject(ed, new JsonSerializerSettings
-                    {
-                        ContractResolver = new CamelCasePropertyNamesContractResolver()
-                    }));
-                    //Environment.Exit(0);
-                })); 
+                btnVisualize.Enabled = true;
 
                 txtOutput.AppendText("Total Combinations: ", Color.Red);
                 txtOutput.AppendText(OutputSumCombinationList.Count +"", Color.ForestGreen);
@@ -169,6 +168,8 @@ namespace DiceCombinationFinder
 
             });
         }
+
+        
 
         private List<Output> OutputSumCombinationList = new List<Output>();
 
@@ -244,6 +245,53 @@ namespace DiceCombinationFinder
             {
                 lblCopiedText.Text = "Nothing to copy!";
             }
+        }
+
+        private void VisualizeButtonClick(object sender, EventArgs e)
+        {
+            Task.Run(() =>
+            {
+                btnVisualize.Enabled = false;
+                btnVisualize.Text = "Loading...";
+
+                var viewerPath = Path.Combine(Application.StartupPath, "viewer.zip");
+                
+                try
+                {
+                    if (File.Exists(viewerPath)) 
+                        File.Delete(viewerPath);  
+                    File.WriteAllBytes(viewerPath, Resource.viewer);
+                    var viewerDir = Path.Combine(Application.StartupPath, "viewer");
+
+                    if (Directory.Exists(viewerDir))
+                    {
+                        Directory.Delete(viewerDir, true);
+                    }
+
+                    ZipFile.ExtractToDirectory(viewerPath, viewerDir);
+
+                    File.Delete(viewerPath);
+
+                    File.WriteAllText(Path.Combine(viewerDir, "data", "data.json"), JsonConvert.SerializeObject(exportOutput, new JsonSerializerSettings
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    }));
+
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        btnVisualize.Enabled = true;
+                        btnVisualize.Text = "Visualize";
+                        var nv = new Visualizer(Path.Combine(viewerDir, "index.html"));
+                        nv.WindowState = FormWindowState.Maximized;
+                        nv.ShowDialog();
+                    }));
+                }
+                catch (Exception exx)
+                {
+                    MessageBox.Show("Unable to load viewver, try again latter.", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                } 
+            });
         }
     }
 }

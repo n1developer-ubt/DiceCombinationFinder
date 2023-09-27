@@ -36,14 +36,15 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.progress = new System.Windows.Forms.ProgressBar();
+            this.btnVisualize = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.lblCopiedText = new System.Windows.Forms.Label();
+            this.btnCopy = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnSearch = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtOutputSum = new UBTStandardLibrary.UBTTextBox();
             this.txtRolls = new UBTStandardLibrary.UBTTextBox();
             this.txtRemoveCombination = new UBTStandardLibrary.UBTTextBox();
             this.txtFaces = new UBTStandardLibrary.UBTTextBox();
-            this.btnSearch = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnCopy = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.lblCopiedText = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -105,9 +106,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.progress);
+            this.panel3.Controls.Add(this.btnVisualize);
             this.panel3.Controls.Add(this.lblCopiedText);
             this.panel3.Controls.Add(this.btnCopy);
-            this.panel3.Controls.Add(this.progress);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 392);
@@ -119,12 +121,132 @@
             // progress
             // 
             this.progress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progress.Location = new System.Drawing.Point(5, 5);
+            this.progress.Location = new System.Drawing.Point(138, 5);
             this.progress.Margin = new System.Windows.Forms.Padding(5);
             this.progress.Name = "progress";
-            this.progress.Size = new System.Drawing.Size(657, 48);
+            this.progress.Size = new System.Drawing.Size(391, 48);
             this.progress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progress.TabIndex = 1;
+            // 
+            // btnVisualize
+            // 
+            this.btnVisualize.Active = false;
+            this.btnVisualize.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnVisualize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnVisualize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVisualize.BorderRadius = 0;
+            this.btnVisualize.ButtonText = "Visualize";
+            this.btnVisualize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVisualize.DisabledColor = System.Drawing.Color.Gray;
+            this.btnVisualize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnVisualize.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnVisualize.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnVisualize.Iconimage")));
+            this.btnVisualize.Iconimage_right = null;
+            this.btnVisualize.Iconimage_right_Selected = null;
+            this.btnVisualize.Iconimage_Selected = null;
+            this.btnVisualize.IconMarginLeft = 0;
+            this.btnVisualize.IconMarginRight = 0;
+            this.btnVisualize.IconRightVisible = false;
+            this.btnVisualize.IconRightZoom = 0D;
+            this.btnVisualize.IconVisible = false;
+            this.btnVisualize.IconZoom = 90D;
+            this.btnVisualize.IsTab = false;
+            this.btnVisualize.Location = new System.Drawing.Point(529, 5);
+            this.btnVisualize.Name = "btnVisualize";
+            this.btnVisualize.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnVisualize.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnVisualize.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnVisualize.selected = false;
+            this.btnVisualize.Size = new System.Drawing.Size(133, 48);
+            this.btnVisualize.TabIndex = 4;
+            this.btnVisualize.Text = "Visualize";
+            this.btnVisualize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnVisualize.Textcolor = System.Drawing.Color.White;
+            this.btnVisualize.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualize.Click += new System.EventHandler(this.VisualizeButtonClick);
+            // 
+            // lblCopiedText
+            // 
+            this.lblCopiedText.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblCopiedText.AutoSize = true;
+            this.lblCopiedText.Location = new System.Drawing.Point(144, 24);
+            this.lblCopiedText.Name = "lblCopiedText";
+            this.lblCopiedText.Size = new System.Drawing.Size(0, 13);
+            this.lblCopiedText.TabIndex = 3;
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Active = false;
+            this.btnCopy.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnCopy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnCopy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCopy.BorderRadius = 0;
+            this.btnCopy.ButtonText = "Copy";
+            this.btnCopy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCopy.DisabledColor = System.Drawing.Color.Gray;
+            this.btnCopy.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCopy.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnCopy.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnCopy.Iconimage")));
+            this.btnCopy.Iconimage_right = null;
+            this.btnCopy.Iconimage_right_Selected = null;
+            this.btnCopy.Iconimage_Selected = null;
+            this.btnCopy.IconMarginLeft = 0;
+            this.btnCopy.IconMarginRight = 0;
+            this.btnCopy.IconRightVisible = false;
+            this.btnCopy.IconRightZoom = 0D;
+            this.btnCopy.IconVisible = false;
+            this.btnCopy.IconZoom = 90D;
+            this.btnCopy.IsTab = false;
+            this.btnCopy.Location = new System.Drawing.Point(5, 5);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnCopy.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnCopy.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnCopy.selected = false;
+            this.btnCopy.Size = new System.Drawing.Size(133, 48);
+            this.btnCopy.TabIndex = 2;
+            this.btnCopy.Text = "Copy";
+            this.btnCopy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCopy.Textcolor = System.Drawing.Color.White;
+            this.btnCopy.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Active = false;
+            this.btnSearch.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.BorderRadius = 0;
+            this.btnSearch.ButtonText = "Search";
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.DisabledColor = System.Drawing.Color.Gray;
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSearch.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnSearch.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnSearch.Iconimage")));
+            this.btnSearch.Iconimage_right = null;
+            this.btnSearch.Iconimage_right_Selected = null;
+            this.btnSearch.Iconimage_Selected = null;
+            this.btnSearch.IconMarginLeft = 0;
+            this.btnSearch.IconMarginRight = 0;
+            this.btnSearch.IconRightVisible = false;
+            this.btnSearch.IconRightZoom = 0D;
+            this.btnSearch.IconVisible = false;
+            this.btnSearch.IconZoom = 90D;
+            this.btnSearch.IsTab = false;
+            this.btnSearch.Location = new System.Drawing.Point(662, 5);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSearch.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSearch.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnSearch.selected = false;
+            this.btnSearch.Size = new System.Drawing.Size(133, 48);
+            this.btnSearch.TabIndex = 0;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSearch.Textcolor = System.Drawing.Color.White;
+            this.btnSearch.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // panel2
             // 
@@ -231,89 +353,6 @@
             this.txtFaces.Text = "Faces 1-30, 34, 40, 44, #19, #20-24";
             this.txtFaces.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Active = false;
-            this.btnSearch.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.BorderRadius = 0;
-            this.btnSearch.ButtonText = "Search";
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.DisabledColor = System.Drawing.Color.Gray;
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSearch.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnSearch.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnSearch.Iconimage")));
-            this.btnSearch.Iconimage_right = null;
-            this.btnSearch.Iconimage_right_Selected = null;
-            this.btnSearch.Iconimage_Selected = null;
-            this.btnSearch.IconMarginLeft = 0;
-            this.btnSearch.IconMarginRight = 0;
-            this.btnSearch.IconRightVisible = false;
-            this.btnSearch.IconRightZoom = 0D;
-            this.btnSearch.IconVisible = false;
-            this.btnSearch.IconZoom = 90D;
-            this.btnSearch.IsTab = false;
-            this.btnSearch.Location = new System.Drawing.Point(662, 5);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnSearch.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnSearch.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnSearch.selected = false;
-            this.btnSearch.Size = new System.Drawing.Size(133, 48);
-            this.btnSearch.TabIndex = 0;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnSearch.Textcolor = System.Drawing.Color.White;
-            this.btnSearch.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnCopy
-            // 
-            this.btnCopy.Active = false;
-            this.btnCopy.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnCopy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnCopy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCopy.BorderRadius = 0;
-            this.btnCopy.ButtonText = "Copy";
-            this.btnCopy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCopy.DisabledColor = System.Drawing.Color.Gray;
-            this.btnCopy.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCopy.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnCopy.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnCopy.Iconimage")));
-            this.btnCopy.Iconimage_right = null;
-            this.btnCopy.Iconimage_right_Selected = null;
-            this.btnCopy.Iconimage_Selected = null;
-            this.btnCopy.IconMarginLeft = 0;
-            this.btnCopy.IconMarginRight = 0;
-            this.btnCopy.IconRightVisible = false;
-            this.btnCopy.IconRightZoom = 0D;
-            this.btnCopy.IconVisible = false;
-            this.btnCopy.IconZoom = 90D;
-            this.btnCopy.IsTab = false;
-            this.btnCopy.Location = new System.Drawing.Point(5, 5);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnCopy.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnCopy.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnCopy.selected = false;
-            this.btnCopy.Size = new System.Drawing.Size(133, 48);
-            this.btnCopy.TabIndex = 2;
-            this.btnCopy.Text = "Copy";
-            this.btnCopy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnCopy.Textcolor = System.Drawing.Color.White;
-            this.btnCopy.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
-            // 
-            // lblCopiedText
-            // 
-            this.lblCopiedText.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblCopiedText.AutoSize = true;
-            this.lblCopiedText.Location = new System.Drawing.Point(144, 24);
-            this.lblCopiedText.Name = "lblCopiedText";
-            this.lblCopiedText.Size = new System.Drawing.Size(0, 13);
-            this.lblCopiedText.TabIndex = 3;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +389,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnSearch;
         private Bunifu.Framework.UI.BunifuFlatButton btnCopy;
         private System.Windows.Forms.Label lblCopiedText;
+        private Bunifu.Framework.UI.BunifuFlatButton btnVisualize;
     }
 }
 

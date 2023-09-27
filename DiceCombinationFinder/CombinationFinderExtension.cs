@@ -19,7 +19,7 @@ namespace DiceCombinationFinder
             }
 
             string pattern = string.Join("", arr
-                .Select((num, index) => ((num % 2 == 0) == (index % 2 == 0) ? "e" : "o"))
+                .Select((num, index) => (num % 2 == 0) ? "e" : "o")
                 .ToArray());
 
             return pattern.ToUpper();
@@ -95,6 +95,8 @@ namespace DiceCombinationFinder
     {
         public int Min { get; set; } = 0;
         public int Max { get; set; } = 0;
+        public List<int> Faces { get; set; }
+        public int Rolls { get; set; }
         public List<int> Sums { get; set; } = new List<int>();
         public List<ExportData> Data { get; set; }
     }
